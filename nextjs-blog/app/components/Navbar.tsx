@@ -7,6 +7,9 @@ const  Navbar =  () => {
       <Link href="/" className="font-bold text-3xl">
         Timothy&apos;s<span className="text-primary">Blog</span>
       </Link>
+      <Link href="https://timothyitayi.com" className="font-bold text-3xl">
+        Portfolio
+      </Link>
 
       <ModeToggle />
     </nav>
