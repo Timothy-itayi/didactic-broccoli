@@ -34,7 +34,7 @@ export default async function Home() {
             alt="image"
             width={500}
             height={500}
-            className="rounded-t-lg h-[200px] object-cover"
+            className="rounded-t-lg w-full object-cover"
           />
 
           <CardContent className="mt-5">
@@ -42,7 +42,7 @@ export default async function Home() {
             <p className="line-clamp-3 text-sm mt-2 text-gray-600 dark:text-gray-300">
               {post.smallDescription}
             </p>
-            <Button asChild className="w-full mt-7">
+            <Button asChild className=" w-full mt-7">
               <Link href={`/blog/${post.currentSlug}`}>Read More</Link>
             </Button>
           </CardContent>
