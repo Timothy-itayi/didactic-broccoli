@@ -23,15 +23,16 @@ export default async function BlogArticle({
 }: {
   params: { slug: string };
 }) {
-  const data: fullBlog = await getData(params.slug);
+  const { slug } = params; 
+  const data: fullBlog = await getData(slug);
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 mb-10 flex flex-col items-center text-center">
       <h1>
-        <span className="block text-base text-center text-primary font-semibold tracking-wide uppercase">
+        <span className="block text-base text-primary font-semibold tracking-wide uppercase">
           Timothy's - Blog
         </span>
-        <span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">
+        <span className="mt-2 block text-3xl leading-8 font-bold tracking-tight sm:text-4xl">
           {data.title}
         </span>
       </h1>
@@ -45,7 +46,7 @@ export default async function BlogArticle({
         className="rounded-lg mt-8 border"
       />
 
-      <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
+      <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary text-left max-w-prose ">
         <PortableText value={data.content} />
       </div>
     </div>
