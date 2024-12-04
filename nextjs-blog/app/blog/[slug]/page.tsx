@@ -27,7 +27,7 @@ export default async function BlogArticle({
   const data: fullBlog = await getData(slug);
 
   return (
-    <div className="mt-8 mb-10 flex flex-col items-center text-center">
+    <div className="mt-8 flex flex-col items-center text-center">
       <h1>
         <span className="block text-base text-primary font-semibold tracking-wide uppercase">
           Timothy's - Blog
@@ -39,8 +39,8 @@ export default async function BlogArticle({
 
       <Image
         src={urlFor(data.titleImage).url()}
-        width={800}
-        height={800}
+        width={400}
+        height={400}
         alt="Title Image"
         priority
         className="rounded-lg mt-8 border"
