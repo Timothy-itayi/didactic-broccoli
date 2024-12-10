@@ -34,26 +34,27 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 0 0% 0%; /* Pure black */
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 0 0% 0%; /* Match background */
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 0 0% 0%; /* Match background */
     --popover-foreground: 210 40% 98%;
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 0 0% 15%; /* A near-black shade */
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 0 0% 15%; /* A near-black shade */
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 0 0% 15%; /* A near-black shade */
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 15%; /* A near-black shade */
+    --input: 0 0% 15%; /* A near-black shade */
+    --ring: 0 0% 20%; /* A subtle ring for contrast */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -69,4 +70,47 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/*Landing page font*/
+
+@font-face {
+  font-family: 'Author-Medium';
+  src: url('../app/fonts/Author-font/Author-Medium.otf') format('truetype');
+
+}
+@font-face {
+  font-family: 'Author-Regular';
+  src: url('../app/fonts/Author-font/Author-Regular.otf') format('truetype');
+
+}
+
+
+.landing-header-font {
+  font-family: 'Author-Medium';
+}
+
+.landing-description-font {
+  font-family: 'Author-Regular';
+}
+
+/*Blog Page font*/
+
+@font-face {
+  font-family: 'BespokeStencil-Bold';
+  src: url('../app/fonts/Bespoke-font/BespokeStencil-Bold.otf') format('truetype');
+
+}
+@font-face {
+  font-family: 'Supreme-Regular';
+  src: url('../app/fonts/Supreme-font/Supreme-Regular.otf') format('truetype');
+
+}
+.blog-header-font {
+  font-family: 'BespokeStencil-Bold';
+}
+
+.blog-description-font {
+  font-family: 'Supreme-Regular';
 }
