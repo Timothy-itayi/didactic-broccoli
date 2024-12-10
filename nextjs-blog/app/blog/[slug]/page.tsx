@@ -27,12 +27,12 @@ export default async function BlogArticle({
   const data: fullBlog = await getData(slug);
 
   return (
-    <div className="mt-8 flex flex-col items-center text-center">
+    <div className="mt-8 flex flex-col items-center text-center ">
       <h1>
-        <span className="block text-base text-primary font-semibold tracking-wide uppercase">
+        <span className="block landing-header-font  text-base text-primary font-semibold tracking-wide uppercase">
           Timothy's - Blog
         </span>
-        <span className="mt-2 block text-3xl leading-8 font-bold tracking-tight sm:text-4xl">
+        <span className="mt-2 block blog-header-font text-2xl leading-8  tracking-tight sm:text-4xl">
           {data.title}
         </span>
       </h1>
@@ -43,10 +43,10 @@ export default async function BlogArticle({
         height={400}
         alt="Title Image"
         priority
-        className="rounded-lg mt-8 border"
+        className="rounded-lg mt-8 mb-5 border"
       />
 
-      <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary text-left max-w-prose ">
+      <div className="mt-16 blog-description-font prose prose-blue prose-lg dark:prose-invert   prose-li:marker:text-primary prose-a:text-primary text-left max-w-prose ">
         <PortableText value={data.content} />
       </div>
     </div>
