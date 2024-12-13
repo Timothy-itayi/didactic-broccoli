@@ -25,6 +25,26 @@ export default async function BlogArticle({
 }) {
   const { slug } = params; 
   const data: fullBlog = await getData(slug);
+  // Define PortableText components inline
+  const components = {
+    types: {
+      image: ({ value }: { value: any }) => {
+        const imageUrl = urlFor(value.asset).url();
+        const isGif = imageUrl.endsWith(".gif");
+  
+        return (
+          <Image
+            src={imageUrl}
+            alt={value.alt || "Blog Image"}
+            width={800}
+            height={450}
+            className="rounded-lg border"
+            unoptimized={isGif} // Add this property for GIFs
+          />
+        );
+      },
+    },
+  };
 
   return (
     <div className="mt-8 flex flex-col items-center text-center ">
@@ -47,7 +67,7 @@ export default async function BlogArticle({
       />
 
       <div className="mt-16 blog-description-font prose prose-blue prose-lg dark:prose-invert   prose-li:marker:text-primary prose-a:text-primary text-left max-w-prose ">
-        <PortableText value={data.content} />
+        <PortableText value={data.content} components={components}/>
       </div>
     </div>
   );
