@@ -21,10 +21,11 @@ async function getData(slug: string) {
 export default async function BlogArticle({
   params,
 }: {
-  params: Promise<{ slug: string }>; // Explicitly typing `params`
+  params: { slug: string }; // Changed from Promise<...>
 }) {
-  const slug = await params.slug;
+  const { slug } = params; // Use destructuring
   const data: fullBlog = await getData(slug);
+
   // Define PortableText components inline
   const components = {
     types: {
