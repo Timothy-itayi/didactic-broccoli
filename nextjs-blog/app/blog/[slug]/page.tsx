@@ -5,26 +5,35 @@ import Image from "next/image";
 
 export const revalidate = 30; // revalidate at most 30 seconds
 
-async function getData(slug: string) {
+async function getData(slug: string): Promise<fullBlog | null> {
   const query = `
     *[_type == "blog" && slug.current == '${slug}'] {
-        "currentSlug": slug.current,
-          title,
-          content,
-          titleImage
-      }[0]`;
+      "currentSlug": slug.current,
+      title,
+      content,
+      titleImage
+    }[0]`;
 
-  const data = await client.fetch(query);
+  const data: fullBlog | null = await client.fetch(query);
   return data;
 }
 
 export default async function BlogArticle({
   params,
 }: {
-  params: { slug: string }; // Changed from Promise<...>
+  params: { slug: string };
 }) {
-  const { slug } = params; // Use destructuring
-  const data: fullBlog = await getData(slug);
+  const { slug } = params;
+  const data = await getData(slug);
+
+  // Check if data exists
+  if (!data) {
+    return (
+      <div className="mt-8 flex flex-col items-center text-center">
+        <h1 className="text-2xl font-semibold">Blog not found</h1>
+      </div>
+    );
+  }
 
   // Define PortableText components inline
   const components = {
@@ -32,7 +41,7 @@ export default async function BlogArticle({
       image: ({ value }: { value: any }) => {
         const imageUrl = urlFor(value.asset).url();
         const isGif = imageUrl.endsWith(".gif");
-  
+
         return (
           <Image
             src={imageUrl}
@@ -40,7 +49,7 @@ export default async function BlogArticle({
             width={800}
             height={450}
             className="rounded-lg border"
-            unoptimized={isGif} 
+            unoptimized={isGif}
           />
         );
       },
@@ -48,12 +57,12 @@ export default async function BlogArticle({
   };
 
   return (
-    <div className="mt-8 flex flex-col items-center text-center ">
+    <div className="mt-8 flex flex-col items-center text-center">
       <h1>
-        <span className="block landing-header-font  text-base text-primary font-semibold tracking-wide uppercase">
+        <span className="block landing-header-font text-base text-primary font-semibold tracking-wide uppercase">
           Timothy&apos;s - Blog
         </span>
-        <span className="mt-2 block blog-header-font text-2xl leading-8  tracking-tight sm:text-4xl">
+        <span className="mt-2 block blog-header-font text-2xl leading-8 tracking-tight sm:text-4xl">
           {data.title}
         </span>
       </h1>
@@ -67,8 +76,8 @@ export default async function BlogArticle({
         className="rounded-lg mt-8 mb-5 border"
       />
 
-      <div className="mt-16 blog-description-font prose prose-blue prose-lg dark:prose-invert   prose-li:marker:text-primary prose-a:text-primary text-left max-w-prose ">
-        <PortableText value={data.content} components={components}/>
+      <div className="mt-16 blog-description-font prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary text-left max-w-prose">
+        <PortableText value={data.content} components={components} />
       </div>
     </div>
   );
