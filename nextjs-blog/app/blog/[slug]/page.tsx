@@ -21,10 +21,11 @@ async function getData(slug: string) {
 export default async function BlogArticle({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string }; // Explicitly typing `params`
 }) {
   const { slug } = params; 
   const data: fullBlog = await getData(slug);
+
   // Define PortableText components inline
   const components = {
     types: {
@@ -39,7 +40,7 @@ export default async function BlogArticle({
             width={800}
             height={450}
             className="rounded-lg border"
-            unoptimized={isGif} // Add this property for GIFs
+            unoptimized={isGif} 
           />
         );
       },
