@@ -5,7 +5,8 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity dev",
+    
+ "dev": "npm install --legacy-peer-deps && sanity dev",
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
