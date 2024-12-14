@@ -6,19 +6,24 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 export const revalidate = 30; // revalidate at most 30 seconds
 
-async function getData() {
-  const query = `
-  *[_type == 'blog'] | order(_createdAt desc) {
-    title,
+async function getData(): Promise<simpleBlogCard[]> {
+  try {
+    const query = `
+    *[_type == 'blog'] | order(_createdAt desc) {
+      title,
       smallDescription,
       "currentSlug": slug.current,
       titleImage
-  }`;
+    }`;
 
-  const data = await client.fetch(query);
-
-  return data;
+    const data: simpleBlogCard[] = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return []; // Return an empty array on error
+  }
 }
+
 
 export default async function Home() {
   const data: simpleBlogCard[] = await getData();
