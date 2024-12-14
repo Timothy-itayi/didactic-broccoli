@@ -3,8 +3,8 @@ import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
-// The Params type is now a Promise containing an array of strings for 'slug'
-type Params = Promise<{ slug: string[] }>;
+// Define the Params type
+type Params = { slug: string };
 
 // Fetch function to get data based on the slug
 async function getData(slug: string): Promise<fullBlog | null> {
@@ -20,16 +20,13 @@ async function getData(slug: string): Promise<fullBlog | null> {
   return data;
 }
 
-export default async function BlogArticle({ params }: { params: Params }) {
+export default async function BlogArticle({ params }: { params: Promise<Params> }) {
   // Await the params promise to resolve it
-  const { slug } = await params; // Destructure the resolved object to get 'slug'
-
-  // Assuming slug is now an array, pick the first value for this example
-  const blogSlug = slug[0]; // You may handle this differently if you need multiple slugs
+  const { slug } = await params;
 
   // Fetch blog data based on the slug
-  const data = await getData(blogSlug);
-
+  const data = await getData(slug);
+ console.log(data)
   // Handle case where data is not found
   if (!data) {
     return (
