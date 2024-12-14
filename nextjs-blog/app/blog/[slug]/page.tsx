@@ -1,10 +1,15 @@
+
+
+import { use } from "react";
 import { fullBlog } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
-export const revalidate = 30; // revalidate at most 30 seconds
+// The Params type is now a Promise containing an array of strings for 'slug'
+type Params = Promise<{ slug: string[] }>;
 
+// Fetch function to get data based on the slug
 async function getData(slug: string): Promise<fullBlog | null> {
   const query = `
     *[_type == "blog" && slug.current == '${slug}'] {
@@ -18,15 +23,17 @@ async function getData(slug: string): Promise<fullBlog | null> {
   return data;
 }
 
-export default async function BlogArticle({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
-  const data = await getData(slug);
+export default async function BlogArticle({ params }: { params: Params }) {
+  // Await the params promise to resolve it
+  const { slug } = await params; // Destructure the resolved object to get 'slug'
 
-  // Check if data exists
+  // Assuming slug is now an array, pick the first value for this example
+  const blogSlug = slug[0]; // You may handle this differently if you need multiple slugs
+
+  // Fetch blog data based on the slug
+  const data = await getData(blogSlug);
+
+  // Handle case where data is not found
   if (!data) {
     return (
       <div className="mt-8 flex flex-col items-center text-center">
@@ -35,7 +42,7 @@ export default async function BlogArticle({
     );
   }
 
-  // Define PortableText components inline
+  // Define PortableText components for rendering custom types like image
   const components = {
     types: {
       image: ({ value }: { value: any }) => {
