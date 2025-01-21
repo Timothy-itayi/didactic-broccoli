@@ -78,7 +78,7 @@ const  Navbar =  () => {
               "text-4xl"
             )}>
               <div className=" ">
-                <p className="inline-block">
+                <p className="inline-block dark:text-white text-zinc-900" >
                   <span className={clsx(
                     "inline-block animate-slide-up",
                     "opacity-0 group-hover:opacity-100 group-hover: -translate-y-full duration-500 ease-in-out"
