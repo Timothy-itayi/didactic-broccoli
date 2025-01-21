@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.2",
@@ -22,13 +21,13 @@
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-portable-text": "^0.6.0",
+    "sanity": "^3.65.1",
     "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7",
-    "sanity": "^3.65.1"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@sanity/eslint-config-studio": "^4.0.0",
     "@tailwindcss/typography": "^0.5.15",
-     "@sanity/eslint-config-studio": "^4.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
