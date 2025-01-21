@@ -60,9 +60,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
   return (
     <div className="mt-8 flex flex-col items-center text-center">
       <h1>
-        <span className="block landing-header-font text-base text-primary font-semibold tracking-wide uppercase">
-          Timothy&apos;s - Blog
-        </span>
+    
         <span className="mt-2 block blog-header-font text-2xl leading-8 tracking-tight sm:text-4xl">
           {data.title}
         </span>
