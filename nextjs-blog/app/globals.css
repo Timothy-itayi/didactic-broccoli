@@ -86,7 +86,15 @@ body {
 
 }
 
+@font-face {
+  font-family: 'Aktura-Regular';
+  src: url('../app/fonts/Aktura-Regular.ttf') format('truetype');
 
+}
+
+.portfolio-font{
+  font-family: 'Aktura-Regular';
+}
 .landing-header-font {
   font-family: 'Author-Medium';
 }
