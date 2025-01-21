@@ -22,7 +22,7 @@ const  Navbar =  () => {
             {/* Top set with higher z-index */}
 
       
-            <div className="relative z-30 overflow-hidden text-white button-font text-4xl dark:text-white text-black ">
+            <div className="relative z-30 overflow-hidden button-font text-4xl dark:text-white text-black ">
               <p className="inline-block">
                 <span className={clsx(
                   "inline-block animate-slide-up",
