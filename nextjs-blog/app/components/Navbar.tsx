@@ -13,7 +13,7 @@ const  Navbar =  () => {
         Timothy&apos;s Blog
       </Link>
       <a href="https://timothyitayi.com">
-        <button className="hover-button relative inline-flex items-center justify-center overflow-hidden transition-all text-white py-2 px-4  group sm:flex hidden">
+        <button className="hover-button relative inline-flex items-center justify-center overflow-hidden transition-all  py-2 px-4  group sm:flex hidden">
 
 
 
@@ -22,7 +22,7 @@ const  Navbar =  () => {
             {/* Top set with higher z-index */}
 
       
-            <div className="relative z-30 overflow-hidden text-white button-font text-4xl dark:text-white text-black ">
+            <div className="relative z-30 overflow-hidden button-font text-4xl  ">
               <p className="inline-block">
                 <span className={clsx(
                   "inline-block animate-slide-up",
@@ -78,7 +78,7 @@ const  Navbar =  () => {
               "text-4xl"
             )}>
               <div className=" ">
-                <p className="inline-block">
+                <p className="inline-block" >
                   <span className={clsx(
                     "inline-block animate-slide-up dark:text-white text-black",
                     "opacity-0 group-hover:opacity-100 group-hover: -translate-y-full duration-500 ease-in-out"
