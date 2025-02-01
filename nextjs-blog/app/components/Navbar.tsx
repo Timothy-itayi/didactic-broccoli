@@ -8,11 +8,11 @@ const  Navbar =  () => {
   return (
     <nav className="w-full relative flex items-center justify-between max-w-2xl mx-auto px-4 py-5 ">
 
-
+      <div className="flex items-center gap-4 sm:gap-6"
       <Link href="/" className="font-bold text-3xl  dark:text-white text-black">
         Timothy&apos;s Blog
       </Link>
-      <a href="https://timothyitayi.com">
+      <a href="https://timothyitayi.com" className="sm:flex-hidden">
         <button className="hover-button relative inline-flex items-center justify-center overflow-hidden transition-all  py-2 px-4  group sm:flex hidden">
 
 
@@ -124,6 +124,7 @@ const  Navbar =  () => {
 
         </button>
       </a>
+    </div>
       <ModeToggle />
     </nav>
   );
