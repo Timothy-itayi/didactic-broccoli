@@ -10,7 +10,7 @@ const  Navbar =  () => {
 
       <div className="flex items-center gap-4 sm:gap-6"
       <Link href="/" className="font-bold text-3xl  dark:text-white text-black">
-        Timothy&apos;s Blog
+         Blog
       </Link>
       <a href="https://timothyitayi.com" className="sm:flex-hidden">
         <button className="hover-button relative inline-flex items-center justify-center overflow-hidden transition-all  py-2 px-4  group sm:flex hidden">
