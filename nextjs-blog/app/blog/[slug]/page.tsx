@@ -2,11 +2,10 @@ import { fullBlog } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
+import ScrollToTopButton from "@/app/components/scrollToTopBottom";
 
-// Define the Params type
 type Params = { slug: string };
 
-// Fetch function to get data based on the slug
 async function getData(slug: string): Promise<fullBlog | null> {
   const query = `
     *[_type == "blog" && slug.current == '${slug}'] {
@@ -21,13 +20,9 @@ async function getData(slug: string): Promise<fullBlog | null> {
 }
 
 export default async function BlogArticle({ params }: { params: Promise<Params> }) {
-  // Await the params promise to resolve it
   const { slug } = await params;
-
-  // Fetch blog data based on the slug
   const data = await getData(slug);
- console.log(data)
-  // Handle case where data is not found
+
   if (!data) {
     return (
       <div className="mt-8 flex flex-col items-center text-center">
@@ -36,7 +31,6 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
     );
   }
 
-  // Define PortableText components for rendering custom types like image
   const components = {
     types: {
       image: ({ value }: { value: any }) => {
@@ -60,7 +54,6 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
   return (
     <div className="mt-8 flex flex-col items-center text-center">
       <h1>
-    
         <span className="mt-2 block blog-header-font text-2xl leading-8 tracking-tight sm:text-4xl">
           {data.title}
         </span>
@@ -78,6 +71,8 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
       <div className="mt-16 blog-description-font prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary text-left max-w-prose">
         <PortableText value={data.content} components={components} />
       </div>
+
+      <ScrollToTopButton />
     </div>
   );
 }
