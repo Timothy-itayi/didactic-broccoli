@@ -1,4 +1,5 @@
 'use client'
+import React from "react";
 import Link from "next/link";
 import { ModeToggle } from "./ModeToggle";
 import { clsx } from "clsx";
@@ -8,7 +9,7 @@ const  Navbar =  () => {
   return (
     <nav className="w-full relative flex items-center justify-between max-w-2xl mx-auto px-4 py-5 ">
 
-      <div className="flex items-center gap-4 sm:gap-6"
+      <div className="flex items-center gap-4 sm:gap-6">
       <Link href="/" className="font-bold text-3xl  dark:text-white text-black">
          Blog
       </Link>
