@@ -13,8 +13,16 @@ const  Navbar =  () => {
       <Link href="/" className="font-bold text-3xl  dark:text-white text-black">
          Blog
       </Link>
+
+                           {/* Mobile and Tablet View */}
+      <button className="block sm:hidden  text-white py-2 px-4 rounded-full w-full">
+      Portfolio
+      </button>
+          
+        
       <a href="https://timothyitayi.com" className="text-white">
-        <button className="hover-button relative inline-flex items-center justify-center overflow-hidden transition-all  py-2 px-4  group sm:flex hidden">
+
+ <button className="hover-button relative inline-flex items-center justify-center overflow-hidden transition-all  py-2 px-4  group sm:flex hidden">
 
 
 
