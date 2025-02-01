@@ -17,7 +17,7 @@ const  Navbar =  () => {
    <a href="https://timothyitayi.com" className="text-white">
 
                         {/* Mobile and Tablet View */}
-      <button className="block sm:hidden text-3xl text-white py-2 px-4 rounded-full w-full">
+      <button className="block sm:hidden text-3xl font-bold dark:text-white text-black py-2 px-4 rounded-full w-full">
       Portfolio
       </button>
           
